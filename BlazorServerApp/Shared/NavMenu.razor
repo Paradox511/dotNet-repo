@@ -1,0 +1,71 @@
+﻿
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">Book Stores</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <AuthorizeView>
+        <Authorized>
+            <ul class="nav flex-column">
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="index">
+                        <span class="oi oi-home" aria-hidden="true"></span> Home
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3 dropdown">
+                    <a class="nav-link dropdown-toggle" href="eventhandling" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="1" "oi oi-infinity" aria-hidden="true"></span> Service
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="buy">Borrow</a></li>
+                        <li><a class="dropdown-item" href="sell">Return</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="authorization">
+                        <span class="oi oi-account-login" aria-hidden="true"></span> Authorization
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="authors" Match="NavLinkMatch.All">
+                        <span class="oi oi-people" aria-hidden="true"></span> Employees
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="publishers">
+                        <span class="oi oi-person" aria-hidden="true"></span> Customer
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="publishers">
+                        <span class="oi oi-book" aria-hidden="true"></span> Publishers
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="publishers">
+                        <span class="oi oi-book" aria-hidden="true"></span> Storage
+                    </NavLink>
+                </li>
+                <li class="nav-item fixed-bottom px-3">
+                    <NavLink class="nav-link" href="index">
+                        <span class="oi oi-info" aria-hidden="true"></span> Account
+                    </NavLink>
+                </li>
+            </ul>
+        </Authorized>
+    </AuthorizeView>    
+</div>
+
+@code {
+    bool collapseNavMenu = true;
+
+    string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
